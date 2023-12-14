@@ -15,7 +15,6 @@ class PathfindingState(RobotState):
     def update(self, lidar_distance):
         if lidar_distance < 2:
             return AvoidanceState()
-        # Pathfinding logic goes here
 
     def on_exit(self):
         print("Exiting Pathfinding State")
@@ -27,7 +26,6 @@ class AvoidanceState(RobotState):
     def update(self, lidar_distance):
         if lidar_distance >= 2:
             return PathfindingState()
-        # Avoidance logic goes here
 
     def on_exit(self):
         print("Exiting Avoidance State")
@@ -44,8 +42,9 @@ class Robot:
             self.state = new_state
             self.state.on_enter()
 
-# Example usage
+# Eksempel brug
 robot = Robot()
-# Simulate different LiDAR distances
+
+# SKriv forskellige distancer ind herunder, så giver den dig en liste af hvordan den skifter states:
 for lidar_distance in [3, 1.5, 3]:
     robot.update(lidar_distance)
